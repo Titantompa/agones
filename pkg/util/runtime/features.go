@@ -34,14 +34,14 @@ const (
 	// FeatureCustomFasSyncInterval is a feature flag that enables a custom FleetAutoscaler resync interval
 	FeatureCustomFasSyncInterval Feature = "CustomFasSyncInterval"
 
+	// FeatureSDKGracefulTermination is a feature flag that enables SDK to support gracefulTermination
+	FeatureSDKGracefulTermination Feature = "SDKGracefulTermination"
+
 	// FeatureStateAllocationFilter is a feature flag that enables state filtering on Allocation.
 	FeatureStateAllocationFilter Feature = "StateAllocationFilter"
 
 	////////////////
 	// Alpha features
-
-	// FeatureLifecycleContract enables the `lifecycleContract` API to specify disruption tolerance.
-	FeatureLifecycleContract Feature = "LifecycleContract"
 
 	// FeaturePlayerAllocationFilter is a feature flag that enables the ability for Allocations to filter based on
 	// player capacity.
@@ -54,8 +54,17 @@ const (
 	// relevant metric views to reset their state immediately when an Agones resource is deleted.
 	FeatureResetMetricsOnDelete Feature = "ResetMetricsOnDelete"
 
-	// FeatureSDKGracefulTermination is a feature flag that enables SDK to support gracefulTermination
-	FeatureSDKGracefulTermination Feature = "SDKGracefulTermination"
+	// FeatureSafeToEvict enables the `SafeToEvict` API to specify disruption tolerance.
+	FeatureSafeToEvict Feature = "SafeToEvict"
+
+	// FeaturePodHostname enables the Pod Hostname being assigned the name of the GameServer
+	FeaturePodHostname = "PodHostname"
+
+	////////////////
+	// "Pre"-Alpha features
+
+	// FeatureSplitControllerAndExtensions is a feature flag that will split agones-controller into two deployments
+	FeatureSplitControllerAndExtensions = "SplitControllerAndExtensions"
 
 	////////////////
 	// Example feature
@@ -92,15 +101,19 @@ var (
 	// In each of these, keep the feature sorted by descending maturity then alphabetical
 	featureDefaults = map[Feature]bool{
 		// Beta features
-		FeatureCustomFasSyncInterval: true,
-		FeatureStateAllocationFilter: true,
+		FeatureCustomFasSyncInterval:  true,
+		FeatureSDKGracefulTermination: true,
+		FeatureStateAllocationFilter:  true,
 
 		// Alpha features
-		FeatureLifecycleContract:      false,
 		FeaturePlayerAllocationFilter: false,
 		FeaturePlayerTracking:         false,
 		FeatureResetMetricsOnDelete:   false,
-		FeatureSDKGracefulTermination: false,
+		FeatureSafeToEvict:            false,
+		FeaturePodHostname:            false,
+
+		// Pre-Alpha features
+		FeatureSplitControllerAndExtensions: false,
 
 		// Example feature
 		FeatureExample: false,
